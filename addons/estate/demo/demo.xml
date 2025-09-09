@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Dữ liệu demo cho estate.property -->
+    <record id="demo_property_1" model="estate.property">
+        <field name="name">Beautiful Family House</field>
+        <field name="description">A beautiful family house with garden and garage, perfect for families with children.</field>
+        <field name="postcode">10000</field>
+        <field name="date_availability">2025-10-15</field>
+        <field name="expected_price">250000.0</field>
+        <field name="selling_price">0.0</field>
+        <field name="bedrooms">4</field>
+        <field name="living_area">120</field>
+        <field name="facades">2</field>
+        <field name="garage">True</field>
+        <field name="garden">True</field>
+        <field name="garden_area">80</field>
+        <field name="garden_orientation">south</field>
+    </record>
+
+    <record id="demo_property_2" model="estate.property">
+        <field name="name">Modern Apartment Downtown</field>
+        <field name="description">Modern apartment in the city center, close to all amenities and public transport.</field>
+        <field name="postcode">10001</field>
+        <field name="date_availability">2025-12-01</field>
+        <field name="expected_price">180000.0</field>
+        <field name="selling_price">0.0</field>
+        <field name="bedrooms">3</field>
+        <field name="living_area">75</field>
+        <field name="facades">1</field>
+        <field name="garage">False</field>
+        <field name="garden">False</field>
+        <field name="garden_area">0</field>
+    </record>
+
+    <record id="demo_property_3" model="estate.property">
+        <field name="name">Luxury Villa with Pool</field>
+        <field name="description">Luxury villa with swimming pool, perfect for those who appreciate comfort and luxury.</field>
+        <field name="postcode">10002</field>
+        <field name="date_availability">2025-11-01</field>
+        <field name="expected_price">500000.0</field>
+        <field name="selling_price">0.0</field>
+        <field name="bedrooms">5</field>
+        <field name="living_area">200</field>
+        <field name="facades">4</field>
+        <field name="garage">True</field>
+        <field name="garden">True</field>
+        <field name="garden_area">150</field>
+        <field name="garden_orientation">north</field>
+    </record>
+
+    <record id="demo_partner_1" model="res.partner">
+        <field name="name">John Buyer</field>
+        <field name="email">john@example.com</field>
+    </record>
+
+    <record id="demo_offer_1" model="estate.property.offer">
+        <field name="property_id" ref="demo_property_1"/>
+        <field name="partner_id" ref="demo_partner_1"/>
+        <field name="price">380000.0</field>
+        <field name="status">pending</field>
+    </record>
+
+    <record id="demo_offer_2" model="estate.property.offer">
+        <field name="property_id" ref="demo_property_1"/>
+        <field name="partner_id" ref="base.partner_admin"/>
+        <field name="price">420000.0</field>
+        <field name="status">pending</field>
+    </record>
+</odoo>

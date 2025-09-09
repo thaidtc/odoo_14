@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="estate_property_tree" model="ir.ui.view">
+        <field name="name">estate.property.tree</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <tree string="Properties" default_order="name asc" create="true">
+                <!-- Các cột hiển thị -->
+                <field name="name" string="Property Title"/>
+                <field name="property_type_id"/>
+                <field name="expected_price" string="Expected Price"/>
+                <field name="bedrooms" string="Bedrooms"/>
+                <field name="best_price" string="Best Offer"/>
+                <field name="living_area" string="Living Area (m²)"/>
+                <field name="total_area" string="Total Area (m²)"/>
+                <field name="state" string="Status"/>
+                <field name="postcode" string="Postcode"/>
+                <field name="date_availability" string="Available From"/>
+                <field name="salesperson_id" string="Salesperson"/>
+                
+                <!-- Hiển thị trường boolean dưới dạng icon -->
+                <field name="garage" string="Garage" invisible="1"/>
+                <field name="garden" string="Garden" invisible="1"/>
+                <field name="active" string="Active" invisible="1"/>
+                
+                <!-- Custom decoration cho trạng thái -->
+                <field name="state" invisible="1"/>
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="estate_property_form" model="ir.ui.view">
+        <field name="name">estate.property.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_set_sold" string="Mark as Sold" type="object" 
+                            class="btn-primary" 
+                            attrs="{'invisible': [('state', 'in', ['sold', 'canceled'])]}"/>
+                    <button name="action_set_canceled" string="Cancel" type="object" 
+                            class="btn-secondary" 
+                            attrs="{'invisible': [('state', 'in', ['sold', 'canceled'])]}"/>
+                    <field name="state" widget="statusbar" 
+                        statusbar_visible="new,offer_received,offer_accepted,sold,canceled"
+                        statusbar_colors='{"sold":"green", "canceled":"red"}'/>
+                </header>
+
+                <sheet>
+                    <group string="Basic Information">
+                        <group>
+                            <field name="name" placeholder="Property Title..."/>
+                            <field name="property_type_id"/>
+                            <field name="postcode"/>
+                            <field name="date_availability" 
+                                placeholder="Select availability date..."
+                                on_change="1"/>
+                        </group>
+                        <group>
+                            <field name="expected_price"/>
+                            <field name="best_price" string="Best Offer"/>
+                            <field name="selling_price" attrs="{'readonly': [('selling_price', '&gt;', 0)]}"/>
+                            <field name="bedrooms"/>
+                        </group>
+                    </group>
+
+                    <group string="Area Information">
+                        <group>
+                            <field name="garage"/>
+                            <field name="garden" on_change="1"/>
+                            <field name="garden_area" 
+                                attrs="{'invisible': [('garden', '=', False)]}"
+                                placeholder="Enter garden area..."/>
+                            <field name="garden_orientation" 
+                                attrs="{'invisible': [('garden', '=', False)]}"
+                                placeholder="Select orientation..."/>
+                        </group>
+                        <group>
+                            <field name="living_area" placeholder="Enter living area..."/>
+                            <field name="total_area" string="Total Area" readonly="1"/>
+                            <field name="facades"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="state"/>
+                        <field name="active"/>
+                        <field name="buyer_id"/>
+                        <field name="salesperson_id"/>
+                    </group>
+                    <field name="description" nolabel="1"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="estate_property_search" model="ir.ui.view">
+        <field name="name">estate.property.search</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Property Title"/>
+                <field name="postcode" string="Postcode"/>
+                <field name="expected_price" string="Expected Price"/>
+                <field name="bedrooms" string="Bedrooms"/>
+                <field name="living_area" string="Living Area"/>
+                <field name="facades" string="Facades"/>
+                <field name="state" string="Status"/>
+                <field name="active" string="Active"/>
+
+                <!-- Filters -->
+                <filter name="new_properties" string="New Properties" domain="[('state', '=', 'new')]"/>
+                <filter name="offer_received" string="Offer Received" domain="[('state', '=', 'offer_received')]"/>
+
+                <!-- Group By -->
+                <group expand="0" string="Group By">
+                    <filter string="Postcode" name="group_by_postcode"
+                        context="{'group_by': 'postcode'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="estate_property_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="estate_property_tree"/>
+        <field name="search_view_id" ref="estate_property_search"/>
+    </record>
+
+    <!-- Menu item để truy cập action -->
+    <!-- <menuitem id="estate_menu_root" name="Real Estate"/>
+    <menuitem id="estate_property_menu" name="Properties" parent="estate_menu_root" action="estate_property_action"/> -->
+    <!-- ĐÃ XÓA PHẦN MENU Ở ĐÂY - Remove menu khi đã tạo views riêng -->
+</odoo>

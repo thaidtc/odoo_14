@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Nhóm quản trị Estate -->
+    <record id="group_estate_admin" model="res.groups">
+        <field name="name">Estate Manager</field>
+        <field name="category_id" ref="base.module_category_real_estate"/>
+        <field name="comment">Quản trị viên hệ thống bất động sản, có toàn quyền truy cập vào tất cả tính năng của module Estate.</field>
+    </record>
+</odoo>
