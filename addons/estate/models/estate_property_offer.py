@@ -85,3 +85,38 @@ class EstatePropertyOffer(models.Model):
             offer.status = "refused"
         return True
 
+    @api.model
+    def create(self, vals):
+        """Override create method để chặn tạo offer khi property không ở trạng thái phù hợp"""
+        if "property_id" in vals:
+            property_id = self.env["estate.property"].browse(vals["property_id"])
+            if property_id.state in ["offer_accepted", "sold", "canceled"]:
+                raise UserError(
+                    "Cannot create offer for a property that is already accepted, sold or canceled!"
+                )
+        return super().create(vals)
+
+    def write(self, vals):
+        """Override write method để chặn chỉnh sửa offer khi property không ở trạng thái phù hợp"""
+        if "property_id" in vals:
+            property_id = self.env["estate.property"].browse(vals["property_id"])
+            if property_id.state in ["offer_accepted", "sold", "canceled"]:
+                raise UserError(
+                    "Cannot modify offer for a property that is already accepted, sold or canceled!"
+                )
+        return super().write(vals)
+
+    @api.onchange("property_id")
+    def _onchange_property_id(self):
+        """Hiển thị cảnh báo khi chọn property không phù hợp"""
+        if self.property_id and self.property_id.state in [
+            "offer_accepted",
+            "sold",
+            "canceled",
+        ]:
+            return {
+                "warning": {
+                    "title": "Invalid Property Selection",
+                    "message": "Cannot create offer for a property that is already accepted, sold or canceled!",
+                }
+            }

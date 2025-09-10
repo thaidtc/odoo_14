@@ -57,7 +57,7 @@ class EstatePropertyType(models.Model):
             'context': {
                 'default_property_type_id': self.id,
                 'search_default_group_by_property_id': 1,
-                'search_default_group_by_status': 1
+                'search_default_group_by_status': 1,
             },
             'target': 'current',
         }

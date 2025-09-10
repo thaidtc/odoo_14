@@ -5,9 +5,10 @@
         <field name="name">estate.property.offer.tree</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
-            <tree>
-                <button name="action_accept_offer" string="Accept" type="object" class="btn-success" attrs="{'invisible': [('status', '=', 'accepted')]}"/>
-                <button name="action_refuse_offer" string="Refuse" type="object" class="btn-danger" attrs="{'invisible': [('status', '=', 'refused')]}"/>
+            <tree string="Property Offers" editable="top" decoration-success="status == 'accepted'"
+                  decoration-danger="status == 'refused'">
+                <button name="action_accept_offer" string="Accept" type="object" class="btn-success" attrs="{'invisible': [('status', '!=', 'False')]}"/>
+                <button name="action_refuse_offer" string="Refuse" type="object" class="btn-danger" attrs="{'invisible': [('status', '!=', 'False')]}"/>
 
                 <field name="property_id"/>
                 <field name="property_type_id"/>
@@ -28,8 +29,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_accept_offer" string="Accept Offer" type="object" class="btn-success" attrs="{'invisible': [('status', '=', 'accepted')]}"/>
-                    <button name="action_refuse_offer" string="Refuse Offer" type="object" class="btn-danger" attrs="{'invisible': [('status', '=', 'refused')]}"/>
+                    <button name="action_accept_offer" string="Accept Offer" type="object" class="btn-success" attrs="{'invisible': [('status', '!=', 'False')]}"/>
+                    <button name="action_refuse_offer" string="Refuse Offer" type="object" class="btn-danger" attrs="{'invisible': [('status', '!=', 'False')]}"/>
                 </header>
 
                 <sheet>
@@ -38,10 +39,10 @@
                         <field name="property_type_id"/>
                         <field name="partner_id"/>
                         <field name="price"/>
+                        <field name="validity"/>
                     </group>
                     <group>
                         <field name="status"/>
-                        <field name="validity"/>
                         <field name="date_deadline"/>
                     </group>
                 </sheet>
