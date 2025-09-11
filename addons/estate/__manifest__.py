@@ -9,7 +9,7 @@
     'author': 'ThaiDTC_Dev',
     'website': '',
     'category': 'Real Estate',
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
     'data': [
         # Các file XML sẽ được thêm sau
         'security/res_groups.xml', # Định nghĩa nhóm người dùng

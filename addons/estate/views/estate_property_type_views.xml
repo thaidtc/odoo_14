@@ -5,7 +5,7 @@
         <field name="name">estate.property.type.tree</field>
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree create="true">
                 <field name="name"/>
                 <field name="sequence"/>
                 <field name="offer_count" string="Number of Offers"/>

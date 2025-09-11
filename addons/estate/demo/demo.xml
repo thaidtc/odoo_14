@@ -47,23 +47,4 @@
         <field name="garden_area">150</field>
         <field name="garden_orientation">north</field>
     </record>
-
-    <record id="demo_partner_1" model="res.partner">
-        <field name="name">John Buyer</field>
-        <field name="email">john@example.com</field>
-    </record>
-
-    <record id="demo_offer_1" model="estate.property.offer">
-        <field name="property_id" ref="demo_property_1"/>
-        <field name="partner_id" ref="demo_partner_1"/>
-        <field name="price">380000.0</field>
-        <field name="status">pending</field>
-    </record>
-
-    <record id="demo_offer_2" model="estate.property.offer">
-        <field name="property_id" ref="demo_property_1"/>
-        <field name="partner_id" ref="base.partner_admin"/>
-        <field name="price">420000.0</field>
-        <field name="status">pending</field>
-    </record>
 </odoo>

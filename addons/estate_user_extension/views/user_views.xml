@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form_inherit" model="ir.ui.view">
+        <field name="name">res.users.form.inherit.estate</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <!-- Thêm trường property_ids vào form view -->
+            <xpath expr="//page[@name='access_rights']" position="before">
+                <page string="Estate Properties">
+                    <group>
+                        <field name="property_ids" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="property_type_id"/>
+                                <field name="state"/>
+                                <field name="expected_price"/>
+                                <field name="selling_price"/>
+                            </tree>
+
+                            <form>
+                                <group string="Basic Information">
+                                <group>
+                                    <field name="name"/>
+                                    <field name="property_type_id"/>
+                                    <field name="postcode"/>
+                                </group>
+                                <group>
+                                    <field name="expected_price"/>
+                                    <field name="selling_price"/>
+                                    <field name="bedrooms"/>
+                                    <field name="date_availability"/>
+                                </group>
+                            </group>
+
+                            <group string="Area Information">
+                                <group>
+                                    <field name="garage"/>
+                                    <field name="garden"/>
+                                    <field name="garden_area" attrs="{'invisible': [('garden', '=', False)]}"/>
+                                    <field name="garden_orientation" attrs="{'invisible': [('garden', '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="living_area"/>
+                                    <field name="total_area"/>
+                                    <field name="facades"/>
+                                </group>
+                            </group>
+                            </form>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
