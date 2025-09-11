@@ -2,13 +2,13 @@ from odoo import models, fields, api
 from datetime import timedelta
 from odoo.exceptions import ValidationError, UserError
 
-
 class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Estate Property"
+    _inherit = ['mail.thread', 'mail.activity.mixin']  # Thêm kế thừa các mixins
 
     # Các trường cơ bản
-    name = fields.Char(string="Title", required=True)
+    name = fields.Char(string="Title", required=True, tracking=True)
     description = fields.Text(string="Description")
     postcode = fields.Char(string="Postcode")
     date_availability = fields.Date(
@@ -44,10 +44,12 @@ class EstateProperty(models.Model):
             ("offer_accepted", "Offer Accepted"),
             ("sold", "Sold"),
             ("canceled", "Canceled"),
+            ("available", "Available"),
         ],
         required=True,
         copy=False,
         default="new",
+        tracking=True  # Theo dõi thay đổi trạng thái
     )
 
     # CALCULATED FIELDS
@@ -199,3 +201,14 @@ class EstateProperty(models.Model):
             "Selling price must be positive!",
         ),
     ]
+
+    def unlink(self):
+        """Override unlink method để ngăn chặn xóa property không hợp lệ"""
+        for record in self:
+            if record.state not in ["new", "canceled"]:
+                raise UserError(
+                    f"Cannot delete property '{record.name}' with state '{record.state}'. "
+                    f"Only properties with state 'New' or 'Canceled' can be deleted."
+                )
+        # Gọi phương thức unlink gốc nếu validation passed
+        return super().unlink()

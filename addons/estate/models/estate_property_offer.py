@@ -120,3 +120,46 @@ class EstatePropertyOffer(models.Model):
                     "message": "Cannot create offer for a property that is already accepted, sold or canceled!",
                 }
             }
+
+    # OVERRIDE CREATE METHOD
+    @api.model
+    def create(self, vals):
+        """Override create method để thêm business logic"""
+        # Kiểm tra property_id có trong vals
+        if 'property_id' in vals:
+            property_id = vals['property_id']
+            property_obj = self.env['estate.property'].browse(property_id)
+            
+            # 1. KIỂM TRA GIÁ OFFER
+            existing_offers = self.search([('property_id', '=', property_id)])
+            if existing_offers and 'price' in vals:
+                max_existing_price = max(existing_offers.mapped('price'))
+                if vals['price'] < max_existing_price:
+                    raise UserError(
+                        f"Cannot create offer with price {vals['price']}. "
+                        f"There is already an offer with higher price: {max_existing_price}"
+                    )
+            
+            # 2. CẬP NHẬT TRẠNG THÁI PROPERTY
+            if property_obj.state == 'new':
+                property_obj.write({'state': 'offer_received'})
+        
+        # Gọi phương thức create gốc
+        return super().create(vals)
+    
+    # THÊM CONSTRAINT ĐỂ VALIDATE GIÁ
+    @api.constrains('price', 'property_id')
+    def _check_offer_price(self):
+        """Kiểm tra giá offer không thấp hơn offer hiện có"""
+        for offer in self:
+            if offer.property_id:
+                existing_offers = self.search([
+                    ('property_id', '=', offer.property_id.id),
+                    ('id', '!=', offer.id)
+                ])
+                if existing_offers:
+                    max_price = max(existing_offers.mapped('price'))
+                    if offer.price < max_price:
+                        raise ValidationError(
+                            f"Offer price ({offer.price}) cannot be lower than existing offer price ({max_price})!"
+                        )
