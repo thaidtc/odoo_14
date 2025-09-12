@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action để mở báo cáo -->
+    <record id="action_estate_buyer_report" model="ir.actions.act_window">
+        <field name="name">Buyer Statistics Report</field>
+        <field name="res_model">estate.property.buyer.report</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{'search_default_group_by_buyer': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">This report shows aggregated statistics for each property buyer.</p>
+        </field>
+    </record>
+
+    <!-- Chế độ xem dạng bảng (Tree/List) -->
+    <record id="view_estate_buyer_report_tree" model="ir.ui.view">
+        <field name="name">estate.property.buyer.report.tree</field>
+        <field name="model">estate.property.buyer.report</field>
+        <field name="arch" type="xml">
+            <tree string="Buyer Report">
+                <field name="buyer_id"/>
+                <field name="email"/>
+                <field name="state_offer_accepted"/>
+                <field name="state_sold"/>
+                <field name="state_canceled"/>
+                <field name="offers_accepted"/>
+                <field name="offers_refused"/>
+                <field name="max_offer_price"/>
+                <field name="min_offer_price"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -7,3 +7,4 @@ access_estate_property_tag_user,estate.property.tag.user,model_estate_property_t
 access_estate_property_tag_admin,estate.property.tag.admin,model_estate_property_tag,group_estate_admin,1,1,1,1
 access_estate_property_offer_user,estate.property.offer.user,model_estate_property_offer,base.group_user,1,1,1,1
 access_estate_property_offer_admin,estate.property.offer.admin,model_estate_property_offer,group_estate_admin,1,1,1,1
+access_estate_buyer_report_user,estate.buyer.report.user,model_estate_property_buyer_report,base.group_user,1,0,0,0
