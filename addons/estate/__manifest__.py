@@ -9,7 +9,7 @@
     'author': 'ThaiDTC_Dev',
     'website': '',
     'category': 'Real Estate',
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'website', 'mail'],
     'data': [
         # Các file XML sẽ được thêm sau
         'security/res_groups.xml', # Định nghĩa nhóm người dùng
@@ -19,6 +19,7 @@
         'views/estate_property_offer_views.xml',
         'views/estate_property_views.xml', # Giao diện người dùng cho mô hình estate.property
         'views/buyer_report_views.xml',
+        'views/estate_templates.xml',
         'views/estate_menu_views.xml',
     ],
     'demo': [
