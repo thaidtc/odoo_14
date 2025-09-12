@@ -55,4 +55,12 @@
         action="estate_property_offer_action"
         sequence="20"
     />
+
+    <menuitem 
+        id="estate_buyer_report_menu" 
+        name="Buyer Report" 
+        parent="estate_menu_main"
+        action="action_estate_buyer_report" 
+        sequence="30"
+    />
 </odoo>
