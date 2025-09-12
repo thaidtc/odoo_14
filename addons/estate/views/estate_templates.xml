@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Template cho trang giới thiệu -->
+    <template id="estate_intro_template" name="Estate Introduction Page">
+        <t t-call="website.layout">
+            <div id="wrap" class="container mt-3">
+                <h1>Welcome to Our Real Estate Agency</h1>
+                <p>This is the introduction page of our amazing real estate module.</p>
+                <t t-if="company">
+                    <h2>About <t t-esc="company.name"/></h2>
+                    <p>Phone: <t t-esc="company.phone or 'N/A'"/></p>
+                    <p>Email: <t t-esc="company.email or 'N/A'"/></p>
+                </t>
+                <hr/>
+                <a href="/api/estate/properties" class="btn btn-primary">View All Properties</a>
+            </div>
+        </t>
+    </template>
+</odoo>
+
