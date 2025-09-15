@@ -19,3 +19,13 @@ class HospitalPatient(models.Model):  # Bệnh nhân
         default="other",
     )
     note = fields.Text(string="Description")
+    state = fields.Selection(
+        [
+            ("draft", "Draft"),
+            ("confirm", "Confirmed"),
+            ("done", "Done"),
+            ("cancelled", "Cancelled"),
+        ],
+        default="draft",
+        string="Status",
+    )
