@@ -8,6 +8,7 @@
             <tree string="Patients" default_order="name asc" create="true">
                 <!-- Các cột hiển thị -->
                 <field name="name" string="Name"/>
+                <field name="responsible_id" string="Responsible"/>
                 <field name="age" string="Age"/>
                 <field name="gender" string="Gender"/>
                 <field name="note" string="Description"/>
@@ -23,6 +24,7 @@
         <field name="arch" type="xml">
             <kanban>
                 <field name="name" string="Name"/>
+                <field name="responsible_id" string="Responsible"/>
                 <field name="age" string="Age"/>
                 <field name="gender" string="Gender"/>
                 <field name="note" string="Description"/>
@@ -67,6 +69,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="responsible_id"/>
                         <field name="age"/>
                         <field name="gender"/>
                     </group>
