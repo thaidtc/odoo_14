@@ -7,8 +7,8 @@ class HospitalPatient(models.Model):  # Bệnh nhân
     _description = "Hospital Patient"
 
     # Fields
-    name = fields.Char(string="Name", required=True)
-    age = fields.Integer(string="Age")
+    name = fields.Char(string="Name", required=True, tracking=True)
+    age = fields.Integer(string="Age", tracking=True)
     gender = fields.Selection(
         [
             ("male", "Male"),
@@ -28,6 +28,7 @@ class HospitalPatient(models.Model):  # Bệnh nhân
         ],
         default="draft",
         string="Status",
+        tracking=True
     )
 
     def action_confirm(self):
