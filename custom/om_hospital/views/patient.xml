@@ -10,6 +10,7 @@
                 <field name="name" string="Name"/>
                 <field name="age" string="Age"/>
                 <field name="gender" string="Gender"/>
+                <field name="note" string="Description"/>
             </tree>
         </field>
     </record>
@@ -31,6 +32,29 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="hospital_patient_search" model="ir.ui.view">
+        <field name="name">hospital.patient.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Patients">
+                <field name="name"/>
+                <field name="note"/>
+                <separator />
+
+                <!-- Filters -->
+                <filter name="male" string="Male" domain="[('gender', '=', 'male')]"/>
+                <filter name="female" string="Female" domain="[('gender', '=', 'female')]"/>
+                <filter name="other" string="Other" domain="[('gender', '=', 'other')]"/>
+
+                <group expand="1" string="Group By">
+                    <filter string="Gender" name="gender" context="{'group_by': 'gender'}"/>
+                    <filter string="Patient Name" name="patient_name" context="{'group_by': 'name'}"/>
+                </group>
+            </search>
         </field>
     </record>
 
