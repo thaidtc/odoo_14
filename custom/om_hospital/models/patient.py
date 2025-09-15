@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class HospitalPatient(models.Model):  # Bệnh nhân
@@ -8,6 +8,13 @@ class HospitalPatient(models.Model):  # Bệnh nhân
 
     # Fields
     name = fields.Char(string="Name", required=True, tracking=True)
+    reference = fields.Char(
+        string="Reference",
+        required=True,
+        copy=False,
+        readonly=True,
+        default=lambda self: _("New"),
+    )
     age = fields.Integer(string="Age", tracking=True)
     gender = fields.Selection(
         [
@@ -30,7 +37,7 @@ class HospitalPatient(models.Model):  # Bệnh nhân
         string="Status",
         tracking=True,
     )
-    responsible_id = fields.Many2one('res.partner', string='Responsible')
+    responsible_id = fields.Many2one("res.partner", string="Responsible")
 
     def action_confirm(self):
         self.state = "confirm"
@@ -46,8 +53,9 @@ class HospitalPatient(models.Model):  # Bệnh nhân
 
     @api.model
     def create(self, values):
-        if not values.get('note'):
-            values['note'] = 'New Patient'
+        if not values.get("note"):
+            values["note"] = "New Patient"
+        if values.get("reference", _('New')) == _('New'):
+            values["reference"] = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
         result = super(HospitalPatient, self).create(values)
         return result
-        
