@@ -6,7 +6,7 @@
     "author": "ThaiDTC_Dev",
     "website": "",
     "category": "Productivity",
-    "depends": ["base", "sale"],
+    "depends": ["base", "sale", "mail"],
     "data": ["security/ir.model.access.csv", "views/patient.xml", "views/sale.xml"],
     "demo": [],
     "installable": True,
