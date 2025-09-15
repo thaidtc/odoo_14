@@ -11,6 +11,7 @@
                 <field name="age" string="Age"/>
                 <field name="gender" string="Gender"/>
                 <field name="note" string="Description"/>
+                <field name="state" string="Status"/>
             </tree>
         </field>
     </record>
@@ -25,6 +26,7 @@
                 <field name="age" string="Age"/>
                 <field name="gender" string="Gender"/>
                 <field name="note" string="Description"/>
+                <field name="state" string="Status"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">
@@ -54,6 +56,10 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" options="{'clickable': true}"/>
+                </header>
+
                 <sheet>
                     <group>
                         <field name="name"/>
