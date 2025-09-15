@@ -8,6 +8,7 @@
     'category': 'Productivity',
     'depends': ['base'],
     'data': [
+        'security/ir.model.access.csv',
         'views/patient.xml'
     ],
     'demo': [
