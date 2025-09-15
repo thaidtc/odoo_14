@@ -7,7 +7,12 @@
     "website": "",
     "category": "Productivity",
     "depends": ["base", "sale", "mail"],
-    "data": ["security/ir.model.access.csv", "views/patient.xml", "views/sale.xml"],
+    "data": [
+        "security/ir.model.access.csv",
+        "data/data.xml",
+        "views/patient.xml",
+        "views/sale.xml",
+    ],
     "demo": [],
     "installable": True,
     "application": True,
