@@ -81,7 +81,7 @@
                     <group>
                         <field name="patient_id"/>
                         <field name="age"/>
-                        <field name="gender"/>
+                        <field name="gender" readonly="1" force_save="1"/>
                         <field name="date_appointment"/>
                         <field name="date_checkup"/>
                         <field name="note"/>
