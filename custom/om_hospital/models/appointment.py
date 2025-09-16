@@ -9,7 +9,8 @@ class HospitalAppointment(models.Model):  # Cuộc hẹn
     # Fields
     name = fields.Char(string="Order Reference", required=True, readonly=True, copy=False, default=lambda self: _("New"))
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
-    age = fields.Integer(string="Age", related='patient_id.age', tracking=True)
+    age = fields.Integer(string="Age", related='patient_id.age')
+    gender = fields.Selection(string="Gender", related='patient_id.gender')
     state = fields.Selection(
         [
             ("draft", "Draft"),
@@ -45,3 +46,11 @@ class HospitalAppointment(models.Model):  # Cuộc hẹn
             values["name"] = self.env['ir.sequence'].next_by_code('hospital.appointment') or _('New')
         result = super(HospitalAppointment, self).create(values)
         return result
+
+    @api.onchange('patient_id')
+    def onchange_patient_id(self):
+        if self.patient_id:
+            if self.patient_id.note:
+                self.note = self.patient_id.note
+        else:
+            self.note = ''
