@@ -12,6 +12,7 @@
         "data/data.xml",
         "views/patient.xml",
         "views/patient_kid.xml",
+        "views/patient_gender.xml",
         "views/sale.xml",
     ],
     "demo": [],
