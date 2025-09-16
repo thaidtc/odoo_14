@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <tree string="Appointments" default_order="name asc" create="true">
                 <field name="patient_id" string="Patient"/>
+                <field name="age" string="Age"/>
                 <field name="date_appointment" string="Date"/>
                 <field name="date_checkup" string="Check Up Time"/>
                 <field name="state" string="Status"/>
@@ -78,6 +79,7 @@
 
                     <group>
                         <field name="patient_id"/>
+                        <field name="age"/>
                         <field name="date_appointment"/>
                         <field name="date_checkup"/>
                         <field name="note"/>
