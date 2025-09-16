@@ -38,6 +38,12 @@ class HospitalPatient(models.Model):  # Bệnh nhân
         tracking=True,
     )
     responsible_id = fields.Many2one("res.partner", string="Responsible")
+    appointment_count = fields.Integer(string="Appointment Count", compute="_compute_appointment_count")
+
+    def _compute_appointment_count(self):
+        for record in self:
+            appointment_count = self.env['hospital.appointment'].search_count([('patient_id', '=', record.id)])
+            record.appointment_count = appointment_count
 
     def action_confirm(self):
         self.state = "confirm"

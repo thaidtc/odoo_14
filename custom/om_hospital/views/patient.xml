@@ -13,6 +13,7 @@
                 <field name="gender" string="Gender"/>
                 <field name="note" string="Description"/>
                 <field name="state" string="Status"/>
+                <field name="appointment_count" string="Appointment Count"/>
             </tree>
         </field>
     </record>
@@ -77,9 +78,10 @@
                         <field name="name"/>
                         <field name="responsible_id"/>
                         <field name="age"/>
-                        <field name="gender" invisible="context.get('hide_gender')"/>
+                        <field name="appointment_count"/>
                     </group>
                     <group>
+                        <field name="gender" invisible="context.get('hide_gender')"/>
                         <field name="note"/>
                     </group>
                 </sheet>
