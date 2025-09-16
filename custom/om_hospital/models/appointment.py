@@ -35,16 +35,20 @@ class HospitalAppointment(models.Model):  # Cuộc hẹn
     date_checkup = fields.Datetime(string="Check Up Time")
 
     def action_confirm(self):
-        self.state = "confirm"
+        for record in self:
+            record.state = "confirm"
 
     def action_done(self):
-        self.state = "done"
+        for record in self:
+            record.state = "done"
 
     def action_draft(self):
-        self.state = "draft"
+        for record in self:
+            record.state = "draft"
 
     def action_cancel(self):
-        self.state = "cancel"
+        for record in self:
+            record.state = "cancel"
 
     @api.model
     def create(self, values):
