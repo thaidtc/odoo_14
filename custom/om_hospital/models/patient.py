@@ -69,3 +69,10 @@ class HospitalPatient(models.Model):  # Bệnh nhân
             values["reference"] = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
         result = super(HospitalPatient, self).create(values)
         return result
+    
+    @api.model
+    def default_get(self, fields_list):
+        result = super(HospitalPatient, self).default_get(fields_list)
+        if not result.get('note'):
+            result['note'] = "New Patient"
+        return result
