@@ -2,11 +2,11 @@
 <odoo>
     <!-- Action -->
     <record id="patient_male_action" model="ir.actions.act_window">
-        <field name="name">Kids</field>
+        <field name="name">Male</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.patient</field>
         <field name="view_mode">tree,kanban,form</field>
-        <field name="context">{'default_gender': 'male', 'default_note': 'New Patient'}</field>
+        <field name="context">{'default_gender': 'male', 'default_note': 'New Patient', 'hide_gender': 1}</field>
         <field name="domain">[('gender','=', 'male')]</field>
 
         <field name="help" type="html">
@@ -17,11 +17,11 @@
     </record>
 
     <record id="patient_female_action" model="ir.actions.act_window">
-        <field name="name">Kids</field>
+        <field name="name">Female</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.patient</field>
         <field name="view_mode">tree,kanban,form</field>
-        <field name="context">{'default_gender': 'female', 'default_note': 'New Patient'}</field>
+        <field name="context">{'default_gender': 'female', 'default_note': 'New Patient', 'hide_gender': 1}</field>
         <field name="domain">[('gender','=', 'female')]</field>
 
         <field name="help" type="html">
