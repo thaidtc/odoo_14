@@ -2,6 +2,7 @@
 <odoo>
    <template id="assets_backend" name="documents assets backend" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
             <script type="text/javascript" src="/documents/static/src/js/documents_controller_mixin.js"/>
             <script type="text/javascript" src="/documents/static/src/js/documents_model_mixin.js"/>
             <script type="text/javascript" src="/documents/static/src/js/documents_utils.js"/>
@@ -30,6 +31,7 @@
             <script type="text/javascript" src="/documents/static/src/owl/components/pdf_group_name/pdf_group_name.js"/>
             <script type="text/javascript" src="/documents/static/src/js/systray_activity_menu.js"/>
             <script type="text/javascript" src="/documents/static/src/js/tours/documents.js"></script>
+            <script type="text/javascript" src="/documents/static/src/js/documents_scroll_action.js"></script>
 
             <link rel="stylesheet" type="text/scss" href="/documents/static/src/bugfix/bugfix.scss"/>
 
@@ -40,6 +42,7 @@
             <link rel="stylesheet" type="text/scss" href="/documents/static/src/owl/components/pdf_manager/pdf_manager.scss"/>
             <link rel="stylesheet" type="text/scss" href="/documents/static/src/owl/components/pdf_page/pdf_page.scss"/>
             <link rel="stylesheet" type="text/scss" href="/documents/static/src/owl/components/pdf_group_name/pdf_group_name.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/documents/static/src/scss/documents_responsive.scss"/>
         </xpath>
     </template>
 
