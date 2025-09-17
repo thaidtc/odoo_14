@@ -1,0 +1,25 @@
+@media (max-width: 767px) {
+  body.o_web_client,
+  body.o_web_client.o_touch_device {
+    .o_cp_top,
+    .o_cp_bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .o_control_panel .o_cp_bottom_right {
+      flex-wrap: wrap;
+      gap: 10px;
+
+      .btn-group.o_search_options {
+        width: 100%;
+      }
+    }
+
+    .o_documents_content .o_documents_view.o_documents_list_view,
+    .o_documents_kanban .o_documents_kanban_view.o_kanban_view {
+      min-width: 80%;
+    }
+  }
+}
