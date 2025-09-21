@@ -39,6 +39,7 @@ class HospitalPatient(models.Model):  # Bệnh nhân
     )
     responsible_id = fields.Many2one("res.partner", string="Responsible")
     appointment_count = fields.Integer(string="Appointment Count", compute="_compute_appointment_count")
+    image = fields.Binary(string="Patient Image")
 
     def _compute_appointment_count(self):
         for record in self:
