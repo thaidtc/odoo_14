@@ -11,7 +11,7 @@
                 </group>
                 <footer>
                     <button name="create_appointment_action" type="object" string="Create" class="btn-primary"/>
-                    <button name="view_appointment_action" type="object" string="View Appointments" class="btn-primary"/>
+                    <!-- <button name="view_appointment_action" type="object" string="View Appointments" class="btn-primary"/> -->
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
