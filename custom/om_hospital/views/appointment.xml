@@ -134,4 +134,6 @@
     <menuitem id="hospital_appointment" name="Appointments" parent="hospital_appointment_root" action="appointment_action" sequence="10" />
 
     <menuitem id="create_appointment_wizard" name="Create Appointment" parent="hospital_appointment_root" action="create_appointment_wizard_action" sequence="20" />
+
+    <menuitem id="search_appointment_wizard" name="Search Appointment" parent="hospital_appointment_root" action="search_appointment_wizard_action" sequence="30" />
 </odoo>
