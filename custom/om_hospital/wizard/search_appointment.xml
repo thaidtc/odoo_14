@@ -12,7 +12,7 @@
                     <button name="search_appointment_action_m1" type="object" string="Search Appointments (M1)" class="btn-primary"/>
                     <button name="search_appointment_action_m2" type="object" string="Search Appointments (M2)" class="btn-primary"/>
                     <button name="search_appointment_action_m3" type="object" string="Search Appointments (M3)" class="btn-primary"/>
-                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/> 
                 </footer>
             </form>
         </field>

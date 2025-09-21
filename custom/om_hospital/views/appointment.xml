@@ -6,6 +6,9 @@
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
             <tree string="Appointments" default_order="name asc" create="true">
+                <header>
+                    <button name="action_done" string="Mark As Done" class="btn-primary" type="object"/>
+                </header>
                 <field name="patient_id" string="Patient"/>
                 <field name="age" string="Age"/>
                 <field name="gender" string="Gender"/>
