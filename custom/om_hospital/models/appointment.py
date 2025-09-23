@@ -36,6 +36,7 @@ class HospitalAppointment(models.Model):  # Cuộc hẹn
     date_appointment = fields.Date(string="Date")
     date_checkup = fields.Datetime(string="Check Up Time")
     prescription = fields.Text(string="Prescription")
+    prescription_line_ids = fields.One2many('hospital.appointment.proscription.lines', 'appointment_id', string="Prescription Lines")
 
     def action_confirm(self):
         for record in self:
@@ -72,3 +73,13 @@ class HospitalAppointment(models.Model):  # Cuộc hẹn
         else:
             self.gender = ''
             self.note = ''
+
+
+class HospitalAppointmentPrescriptionLines(models.Model):
+    _name = "hospital.appointment.proscription.lines"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
+    _description = "Hospital Appointment Prescription Lines"
+    
+    name = fields.Char(string="Medicine", required=True)
+    quantity = fields.Integer(string="Quantity")
+    appointment_id = fields.Many2one('hospital.appointment', string='Appointment', required=True)
