@@ -9,13 +9,14 @@
                 <header>
                     <button name="action_done" string="Mark As Done" class="btn-primary" type="object"/>
                 </header>
+                <field name="name"/>
                 <field name="patient_id" string="Patient"/>
-                <field name="age" string="Age"/>
-                <field name="gender" string="Gender"/>
-                <field name="date_appointment" string="Date"/>
-                <field name="date_checkup" string="Check Up Time"/>
-                <field name="state" string="Status"/>
-                <field name="note" string="Description"/>
+                <field name="age" string="Age" optional="show"/>
+                <field name="gender" string="Gender" optional="show"/>
+                <field name="date_appointment" string="Date" optional="show"/>
+                <field name="date_checkup" string="Check Up Time" optional="hide"/>
+                <field name="state" string="Status" optional="show"/>
+                <field name="note" string="Description" optional="hide"/>
             </tree>
         </field>
     </record>
