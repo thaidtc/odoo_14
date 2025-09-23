@@ -132,7 +132,7 @@
         </field>
     </record>
 
-    <menuitem id="hospital_appointment_root" name="Appointments" parent="hospital_root" sequence="20" />
+    <menuitem id="hospital_appointment_root" name="Appointments" parent="hospital_root" sequence="30" />
 
     <menuitem id="hospital_appointment" name="Appointments" parent="hospital_appointment_root" action="appointment_action" sequence="10" />
 
