@@ -97,9 +97,20 @@
                             <field name="doctor_id"/>
                             <field name="date_appointment"/>
                             <field name="date_checkup"/>
-                            <field name="note"/>
                         </group>
                     </group>
+                    <notebook>
+                    <page name="doctor_prescription" string="Doctor Prescription">
+                        <group>
+                            <field name="prescription" />
+                        </group>
+                    </page>
+                    <page name="medicine" string="Medicine">
+                    </page>
+                    <page name="other_info" string="Other Info">
+                        <field name="note"/>
+                    </page>
+                </notebook>
                 </sheet>
 
                 <div class="oe_chatter">

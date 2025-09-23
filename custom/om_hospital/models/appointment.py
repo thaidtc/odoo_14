@@ -35,6 +35,7 @@ class HospitalAppointment(models.Model):  # Cuộc hẹn
     note = fields.Text(string="Description")
     date_appointment = fields.Date(string="Date")
     date_checkup = fields.Datetime(string="Check Up Time")
+    prescription = fields.Text(string="Prescription")
 
     def action_confirm(self):
         for record in self:
