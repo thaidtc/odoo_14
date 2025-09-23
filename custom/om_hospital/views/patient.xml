@@ -5,8 +5,10 @@
         <field name="name">hospital.patient.tree</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <tree string="Patients" default_order="name asc" create="true">
+            <tree string="Patients" create="true">
                 <!-- Các cột hiển thị -->
+                <field name="id"/>
+                <field name="reference"/>
                 <field name="name" string="Name"/>
                 <field name="responsible_id" string="Responsible"/>
                 <field name="age" string="Age"/>
@@ -24,6 +26,7 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <kanban>
+                <field name="id"/>
                 <field name="name" string="Name"/>
                 <field name="responsible_id" string="Responsible"/>
                 <field name="age" string="Age"/>
@@ -35,6 +38,9 @@
                         <div t-attf-class="oe_kanban_global_click">
                             <div class="oe_kanban_details">
                                 <ul>
+                                    <li>
+                                        ID: <field name="id"/>
+                                    </li>
                                     <li>
                                         Name: <field name="name"/>
                                     </li>
