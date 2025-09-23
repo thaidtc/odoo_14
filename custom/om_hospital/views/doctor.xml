@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <tree string="Doctors" default_order="name asc" create="true" sample="1">
                 <!-- Các cột hiển thị -->
-                <field name="name" string="Name"/>
+                <field name="doctor_name" string="Name"/>
                 <field name="age" string="Age"/>
                 <field name="gender" string="Gender"/>
                 <field name="note" string="Description"/>
@@ -21,7 +21,7 @@
         <field name="model">hospital.doctor</field>
         <field name="arch" type="xml">
             <kanban sample="1">
-                <field name="name" string="Name"/>
+                <field name="doctor_name" string="Name"/>
                 <field name="age" string="Age"/>
                 <field name="gender" string="Gender"/>
                 <field name="note" string="Description"/>
@@ -31,7 +31,7 @@
                             <div class="oe_kanban_details">
                                 <ul>
                                     <li>
-                                        Name: <field name="name"/>
+                                        Name: <field name="doctor_name"/>
                                     </li>
                                     <li>
                                         Age: <field name="age"/>
@@ -58,7 +58,7 @@
                     <field name="image" widget="image" class="oe_avatar" />
 
                     <group>
-                        <field name="name"/>
+                        <field name="doctor_name"/>
                         <field name="age"/>
                     </group>
                     <group>
@@ -76,7 +76,7 @@
         <field name="model">hospital.doctor</field>
         <field name="arch" type="xml">
             <search string="Doctors">
-                <field name="name"/>
+                <field name="doctor_name"/>
                 <field name="note"/>
                 <separator />
 
@@ -93,6 +93,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.doctor</field>
         <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first doctor!
