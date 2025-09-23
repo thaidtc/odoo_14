@@ -106,6 +106,16 @@
                         </group>
                     </page>
                     <page name="medicine" string="Medicine">
+                        <field name="prescription_line_ids">
+                            <tree editable="bottom">
+                                <field name="name" />
+                                <field name="quantity" />
+                            </tree>
+                            <form>
+                                <field name="name" />
+                                <field name="quantity" />
+                            </form>
+                        </field>
                     </page>
                     <page name="other_info" string="Other Info">
                         <field name="note"/>
