@@ -5,11 +5,12 @@
         <field name="name">hospital.appointment.tree</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <tree string="Appointments" default_order="name asc" create="true">
+            <tree string="Appointments" create="true">
                 <header>
                     <button name="action_done" string="Mark As Done" class="btn-primary" type="object"/>
                 </header>
                 <field name="name"/>
+                <field name="doctor_id" string="Doctor"/>
                 <field name="patient_id" string="Patient"/>
                 <field name="age" string="Age" optional="show"/>
                 <field name="gender" string="Gender" optional="show"/>
@@ -26,7 +27,8 @@
         <field name="name">hospital.appointment.kanban</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <kanban>
+            <kanban default_order="name asc">
+                <field name="name"/>
                 <field name="patient_id" string="Patient"/>
                 <field name="date_appointment" string="Date"/>
                 <field name="date_checkup" string="Check Up Time"/>
@@ -37,6 +39,9 @@
                         <div t-attf-class="oe_kanban_global_click">
                             <div class="oe_kanban_details">
                                 <ul>
+                                    <li>
+                                        ID: <field name="name"/>
+                                    </li>
                                     <li>
                                         Patient: <field name="patient_id"/>
                                     </li>

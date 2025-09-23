@@ -5,6 +5,7 @@ class HospitalPatient(models.Model):  # Bệnh nhân
     _name = "hospital.patient"
     _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Hospital Patient"
+    _order = "id desc"
 
     # Fields
     name = fields.Char(string="Name", required=True, tracking=True)

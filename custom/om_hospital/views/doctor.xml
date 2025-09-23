@@ -5,7 +5,7 @@
         <field name="name">hospital.doctor.tree</field>
         <field name="model">hospital.doctor</field>
         <field name="arch" type="xml">
-            <tree string="Doctors" default_order="name asc" create="true" sample="1">
+            <tree string="Doctors" create="true" sample="1">
                 <!-- Các cột hiển thị -->
                 <field name="doctor_name" string="Name"/>
                 <field name="age" string="Age"/>
