@@ -15,6 +15,7 @@
         "views/patient.xml",
         "views/patient_kid.xml",
         "views/patient_gender.xml",
+        "views/doctor.xml",
         "views/appointment.xml",
         "views/sale.xml",
     ],

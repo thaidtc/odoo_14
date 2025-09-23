@@ -3,3 +3,4 @@ access_hospital_patient,hospital.patient,model_hospital_patient,,1,1,1,1
 access_hospital_appointment,hospital.appointment,model_hospital_appointment,,1,1,1,1
 access_create_appointment_wizard,create.appointment.wizard,model_create_appointment_wizard,,1,1,1,1
 access_search_appointment_wizard,search.appointment.wizard,model_search_appointment_wizard,,1,1,1,1
+access_hospital_doctor,hospital.doctor,model_hospital_doctor,,1,1,1,1

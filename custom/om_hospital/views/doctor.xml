@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="hospital_doctor_tree" model="ir.ui.view">
+        <field name="name">hospital.doctor.tree</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <tree string="Doctors" default_order="name asc" create="true" sample="1">
+                <!-- Các cột hiển thị -->
+                <field name="name" string="Name"/>
+                <field name="age" string="Age"/>
+                <field name="gender" string="Gender"/>
+                <field name="note" string="Description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="hospital_doctor_kanban" model="ir.ui.view">
+        <field name="name">hospital.doctor.kanban</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <kanban sample="1">
+                <field name="name" string="Name"/>
+                <field name="age" string="Age"/>
+                <field name="gender" string="Gender"/>
+                <field name="note" string="Description"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        Name: <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Age: <field name="age"/>
+                                    </li>
+                                    <li>
+                                        Gender: <field name="gender"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="hospital_doctor_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar" />
+
+                    <group>
+                        <field name="name"/>
+                        <field name="age"/>
+                    </group>
+                    <group>
+                        <field name="gender" invisible="context.get('hide_gender')"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="hospital_doctor_search" model="ir.ui.view">
+        <field name="name">hospital.doctor.search</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <search string="Doctors">
+                <field name="name"/>
+                <field name="note"/>
+                <separator />
+
+                <group expand="1" string="Group By">
+                    <filter string="Gender" name="gender" context="{'group_by': 'gender'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="doctor_action" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first doctor!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hospital_doctor_root" name="Doctors" parent="hospital_root" sequence="20" />
+
+    <menuitem id="hospital_doctor" name="Doctors" parent="hospital_doctor_root" action="doctor_action" sequence="10" />
+</odoo>
