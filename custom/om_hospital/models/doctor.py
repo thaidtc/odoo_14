@@ -22,3 +22,13 @@ class HospitalDoctor(models.Model):
     )
     note = fields.Text(string="Description")
     image = fields.Binary(string="Doctor Image")
+
+    def copy(self, default=None):
+        default = dict(default or {})
+        default.update(
+            {
+                "doctor_name": _("%s (copy)") % self.doctor_name,
+                "note": "Copied record",
+            }
+        )
+        return super(HospitalDoctor, self).copy(default)
