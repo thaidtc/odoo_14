@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="action_confirm_appointments" model="ir.actions.server">
+        <field name="name">Confirm Appointment</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_hospital_appointment"/>
+        <field name="binding_model_id" ref="model_hospital_appointment"/>
+        <field name="state">code</field>
+        <field name="code">records.action_confirm()</field>
+    </record>
+
     <!-- Tree View -->
     <record id="hospital_appointment_tree" model="ir.ui.view">
         <field name="name">hospital.appointment.tree</field>
