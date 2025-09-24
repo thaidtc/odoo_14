@@ -1,5 +1,5 @@
 from odoo import models, fields, api, _
-
+from odoo.exceptions import ValidationError
 
 class HospitalPatient(models.Model):  # Bệnh nhân
     _name = "hospital.patient"
@@ -79,3 +79,16 @@ class HospitalPatient(models.Model):  # Bệnh nhân
         if not result.get('note'):
             result['note'] = "New Patient"
         return result
+
+    @api.constrains('name')
+    def _check_name(self):
+        for record in self:
+            patients = self.env['hospital.patient'].search([('name', '=', record.name), ('id', '!=', record.id)])
+            if patients:
+                raise ValidationError(_("Name '%s' is already exist. Patient name must be unique.") % (record.name))
+
+    @api.constrains('age')
+    def _check_age(self):
+        for record in self:
+            if record.age <= 0:
+                raise ValidationError(_("Age must be positive."))
