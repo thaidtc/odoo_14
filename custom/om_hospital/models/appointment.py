@@ -1,5 +1,5 @@
 from odoo import models, fields, api, _
-
+from odoo.exceptions import ValidationError
 
 class HospitalAppointment(models.Model):  # Cuộc hẹn
     _name = "hospital.appointment"
@@ -73,6 +73,11 @@ class HospitalAppointment(models.Model):  # Cuộc hẹn
         else:
             self.gender = ''
             self.note = ''
+
+    def unlink(self):
+        if self.state == 'done':
+            raise ValidationError(_("You cannot delete an appointment %s which is done." % (self.name)))
+        return super(HospitalAppointment, self).unlink()
 
 
 class HospitalAppointmentPrescriptionLines(models.Model):
