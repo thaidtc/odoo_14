@@ -86,6 +86,7 @@
                     <button id="button_done" name="action_done" string="Mark As Done" class="btn-primary" states="confirm" type="object" />
                     <button id="button_draft" name="action_draft" string="Set To Draft" class="btn-primary" states="cancel" type="object" />
                     <button id="button_cancel" name="action_cancel" string="Cancel" states="draft,confirm,done" confirm="Are you sure that you need to cancel?" type="object" />
+                    <button name="action_url" string="Open URL" class="btn-primary" type="object" />
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
                 </header>
 

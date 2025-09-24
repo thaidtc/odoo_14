@@ -78,6 +78,13 @@ class HospitalAppointment(models.Model):  # Cuộc hẹn
         if self.state == 'done':
             raise ValidationError(_("You cannot delete an appointment %s which is done." % (self.name)))
         return super(HospitalAppointment, self).unlink()
+    
+    def action_url(self):
+        return {
+            'type': 'ir.actions.act_url',
+            'url': 'https://www.odoo.com/%s' % (self.name),
+            'target': 'new',
+        }
 
 
 class HospitalAppointmentPrescriptionLines(models.Model):
