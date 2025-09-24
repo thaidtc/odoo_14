@@ -24,4 +24,11 @@
             </xpath>
         </field>
     </record>
+
+    <menuitem
+        id="sale_appointment"
+        name="Appointments"
+        parent="sale.sale_order_menu"
+        action="appointment_action"
+    />
 </odoo>
