@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="patient_card__id_report" name="Patient Card">
+    <t t-foreach="docs" t-as="o">
+      <t t-call="web.basic_layout">
+        <div class="page">
+          <div class="oe_structure"/>
+          <div class="row">
+            <div class="col-xs-8">
+              <table class="table table-bordered" style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+                <tr>
+                  <td width="40%">
+                    <p>
+                      <img t-if="not o.image" t-att-src="'/web/static/src/img/placeholder.png'" height="140" border="1" width="120" />
+                      <img t-if="o.image" t-att-src="'data:image/png;base64,%s' % to_text(o.image)" height="140" border="1" width="120" />
+                    </p>
+                  </td>
+                  <td width="60%">
+                    <table>
+                      <tr>
+                        <td><strong>Patient Name:</strong></td>
+                        <td><span t-field="o.name"/></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Age:</strong></td>
+                        <td><span t-field="o.age"/></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Gender:</strong></td>
+                        <td><span t-field="o.gender"/></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </t>
+    </t>
+
+  </template>
+</odoo>
