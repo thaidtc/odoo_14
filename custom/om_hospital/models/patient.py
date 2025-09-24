@@ -92,3 +92,10 @@ class HospitalPatient(models.Model):  # Bệnh nhân
         for record in self:
             if record.age <= 0:
                 raise ValidationError(_("Age must be positive."))
+
+    def name_get(self):
+        result = []
+        for record in self:
+            name = f"{record.name} ({record.reference})"
+            result.append((record.id, name))
+        return result
