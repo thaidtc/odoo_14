@@ -23,6 +23,7 @@ class HospitalDoctor(models.Model):
     note = fields.Text(string="Description")
     image = fields.Binary(string="Doctor Image")
     appointment_count = fields.Integer(string="Appointments", compute="_compute_appointment_count")
+    active = fields.Boolean(string="Active", default=True)
 
     def _compute_appointment_count(self):
         for record in self:
