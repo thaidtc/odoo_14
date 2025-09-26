@@ -155,6 +155,11 @@
                 <group expand="1" string="Group By">
                     <filter string="Patient" name="patient_id" context="{'group_by': 'patient_id'}"/>
                 </group>
+
+                <searchpanel>
+                    <field name="gender" string="Gender" icon="fa-venus-mars" />
+                    <field name="state" string="Status" select="multi" enable_counters="1" />
+                </searchpanel>
             </search>
         </field>
     </record>
