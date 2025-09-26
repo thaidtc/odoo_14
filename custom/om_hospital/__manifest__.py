@@ -18,6 +18,7 @@
         "views/doctor.xml",
         "views/appointment.xml",
         "views/sale.xml",
+        "views/partner.xml",
         "report/patient_details_template.xml",
         "report/patient_card_template.xml",
         "report/report.xml",
