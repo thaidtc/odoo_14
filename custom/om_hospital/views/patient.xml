@@ -20,7 +20,7 @@
         <field name="name">hospital.patient.tree</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <tree string="Patients" create="true">
+            <tree string="Patients" create="true" expand="1">
                 <!-- Các cột hiển thị -->
                 <field name="id"/>
                 <field name="reference"/>
