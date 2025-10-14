@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Auto Check-out Cron Job - Chạy mỗi ngày lúc 18:30 -->
+    <record id="ir_cron_auto_check_out" model="ir.cron">
+        <field name="name">Attendance: Auto Check-out at 18:30</field>
+        <field name="model_id" ref="model_manual_attendance"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_check_out_cron()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <!-- Cleanup Old Records - Chạy mỗi chủ nhật lúc 3:00 AM -->
+    <record id="ir_cron_cleanup_attendance" model="ir.cron">
+        <field name="name">Attendance: Cleanup Old Records</field>
+        <field name="model_id" ref="model_manual_attendance"/>
+        <field name="state">code</field>
+        <field name="code">model.cleanup_old_attendance_cron()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">weeks</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <!-- Daily Report - Chạy mỗi ngày lúc 8:00 AM -->
+    <record id="ir_cron_daily_attendance_report" model="ir.cron">
+        <field name="name">Attendance: Daily Report</field>
+        <field name="model_id" ref="model_manual_attendance"/>
+        <field name="state">code</field>
+        <field name="code">model.generate_daily_report_cron()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="active" eval="True"/>
+    </record>
+
+    <!-- 
+    Cron Job 4: Test Cron - Chạy mỗi 3 phút (để test)
+    -->
+    <record id="ir_cron_test_attendance" model="ir.cron">
+        <field name="name">Attendance: Test Every 3 Minutes</field>
+        <field name="model_id" ref="model_manual_attendance"/>
+        <field name="state">code</field>
+        <field name="code">model.test_cron_job()</field>
+        <field name="interval_number">3</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>

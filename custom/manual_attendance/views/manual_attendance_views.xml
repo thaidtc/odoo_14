@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Manual Attendance Tree View -->
+    <record id="view_manual_attendance_tree" model="ir.ui.view">
+        <field name="name">manual.attendance.tree</field>
+        <field name="model">manual.attendance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="check_time"/>
+                <field name="attendance_type"/>
+                <field name="status"/>
+                <field name="department_id"/>
+                <field name="location"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Manual Attendance Form View -->
+    <record id="view_manual_attendance_form" model="ir.ui.view">
+        <field name="name">manual.attendance.form</field>
+        <field name="model">manual.attendance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="check_time"/>
+                            <field name="attendance_type"/>
+                            <field name="status"/>
+                        </group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name="job_id"/>
+                            <field name="ip_address"/>
+                            <field name="location"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Quick Check-in/Check-out Form -->
+    <record id="view_quick_attendance_form" model="ir.ui.view">
+        <field name="name">quick.attendance.form</field>
+        <field name="model">manual.attendance</field>
+        <field name="arch" type="xml">
+            <form string="Quick Attendance">
+                <sheet>
+                    <header>
+                        <button name="action_check_in" string="Check In" type="object" class="btn-primary"/>
+                        <button name="action_check_out" string="Check Out" type="object" class="btn-secondary"/>
+                        <button name="action_view_today_attendance" string="View Today's Attendance" type="object" class="btn-info"/>
+                    </header>
+                    <footer>
+                        <button string="Close" class="btn-default" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for Quick Attendance -->
+    <record id="action_quick_attendance" model="ir.actions.act_window">
+        <field name="name">Quick Attendance</field>
+        <field name="res_model">manual.attendance</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_quick_attendance_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Main Attendance Action -->
+    <record id="action_manual_attendance" model="ir.actions.act_window">
+        <field name="name">Manual Attendance</field>
+        <field name="res_model">manual.attendance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_attendance_root" name="Attendance" sequence="10"/>
+    <menuitem id="menu_quick_attendance" name="Quick Attendance" parent="menu_attendance_root" action="action_quick_attendance" sequence="10"/>
+    <menuitem id="menu_attendance_records" name="Attendance Records" parent="menu_attendance_root" action="action_manual_attendance" sequence="20"/>
+</odoo>

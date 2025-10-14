@@ -82,7 +82,7 @@ class HospitalAppointment(models.Model):  # Cuộc hẹn
     def action_url(self):
         return {
             'type': 'ir.actions.act_url',
-            'url': 'https://www.odoo.com/%s' % (self.name),
+            'url': 'http://bapvn-thaidtc:8069/%s' % (self.name),
             'target': 'new',
         }
 
