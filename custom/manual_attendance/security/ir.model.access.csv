@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_manual_attendance_user,manual.attendance.user,model_manual_attendance,base.group_user,1,1,1,0
+access_manual_attendance_manager,manual.attendance.manager,model_manual_attendance,base.group_erp_manager,1,1,1,1

@@ -5,7 +5,7 @@
         <field name="name">estate.property.offer.tree</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
-            <tree string="Property Offers" create="true" editable="top" decoration-success="status == 'accepted'"
+            <tree string="Property Offers" decoration-success="status == 'accepted'"
                   decoration-danger="status == 'refused'">
                 <button name="action_accept_offer" string="Accept" type="object" class="btn-success" attrs="{'invisible': [('status', '!=', 'False')]}"/>
                 <button name="action_refuse_offer" string="Refuse" type="object" class="btn-danger" attrs="{'invisible': [('status', '!=', 'False')]}"/>
